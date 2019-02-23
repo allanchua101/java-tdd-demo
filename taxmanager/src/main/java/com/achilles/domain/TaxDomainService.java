@@ -1,5 +1,6 @@
 package com.achilles.domain;
 
+import com.achilles.contracts.TaxCalculator;
 import com.achilles.contracts.TaxDomainServiceContract;
 import com.achilles.contracts.TaxableIncomeCalculator;
 import com.achilles.models.TaxCalculationRequest;
@@ -10,14 +11,17 @@ public class TaxDomainService implements TaxDomainServiceContract {
     //#region Constructors
     @Inject
     public TaxDomainService(
-            TaxableIncomeCalculator taxableIncomeCalculator
+            TaxableIncomeCalculator taxableIncomeCalculator,
+            TaxCalculator taxCalculator
     ) {
         this.taxableIncomeCalculator = taxableIncomeCalculator;
+        this.taxCalculator = taxCalculator;
     }
     //#endregion
 
     //#region Fields
     private TaxableIncomeCalculator taxableIncomeCalculator;
+    private TaxCalculator taxCalculator;
     //#endregion
 
     //#region Public Methods
@@ -33,6 +37,9 @@ public class TaxDomainService implements TaxDomainServiceContract {
 
         double grossAnnualTaxableIncome = taxableIncomeCalculator.execute(request.getMonthlyIncome());
         result.setGrossAnnualTaxableIncome(grossAnnualTaxableIncome);
+
+        double grossAnnualTax = taxCalculator.execute(grossAnnualTaxableIncome);
+        result.setGrossAnnualTax(grossAnnualTax);
 
         return result;
     }

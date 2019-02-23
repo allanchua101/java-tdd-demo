@@ -29,7 +29,7 @@ public class App {
         TaxDomainServiceContract taxDomainService = injector.getInstance(TaxDomainServiceContract.class);
         TaxCalculationResult result = taxDomainService.calculateTax(request);
 
-        System.out.println("==============================RESULT========================================");
+        System.out.println("----------------------------------RESULT--------------------------------------");
         System.out.printf("Gross Annual Taxable Income: %,.2f\n", result.getGrossAnnualTaxableIncome());
         System.out.printf("Gross Annual Tax: %,.2f\n", result.getGrossAnnualTax());
         System.out.printf("Net Annual Taxable Income: %,.2f\n", result.getNetAnnualTaxableIncome());

@@ -1,12 +1,9 @@
 package com.achilles.ioc;
 
-import com.achilles.contracts.InputCollector;
-import com.achilles.contracts.TaxDomainServiceContract;
-import com.achilles.contracts.TaxableIncomeCalculator;
-import com.achilles.domain.TaxDomainService;
-import com.achilles.utilities.AnnualTaxableIncomeCalculator;
-import com.achilles.utilities.ConsoleInputCollector;
+import com.achilles.contracts.*;
+import com.achilles.utilities.*;
 import com.google.inject.AbstractModule;
+import com.achilles.domain.TaxDomainService;
 
 /**
  * Class that configures all dependency injection mappings in tax management
@@ -24,6 +21,7 @@ public class TaxManagerModule extends AbstractModule {
   protected void configure() {
     bind(InputCollector.class).to(ConsoleInputCollector.class);
     bind(TaxableIncomeCalculator.class).to(AnnualTaxableIncomeCalculator.class);
+    bind(TaxCalculator.class).to(AnnualTaxCalculator.class);
     bind(TaxDomainServiceContract.class).to(TaxDomainService.class);
   }
 }

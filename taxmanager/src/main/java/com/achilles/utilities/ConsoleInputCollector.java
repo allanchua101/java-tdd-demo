@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class ConsoleInputCollector implements InputCollector {
     //#region Constants
-    private final static String WELCOME_MESSAGE = "=========================Achilles Systems - Tax Calculator====================";
+    private final static String WELCOME_MESSAGE = "------------------------------Achilles Systems - Tax Calculator-----------------------------";
     private final static String PROVIDE_MONTHLY_INCOME = "Monthly income: ";
     private final static String CIVIL_STATUS_CAPTURE_MESSAGE = "Civil Status (Single - 1; Married - 2;): ";
     private final static String PROVIDE_NUMBER_OF_DEPENDENTS = "Number of dependents: ";

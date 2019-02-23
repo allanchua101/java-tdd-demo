@@ -12,6 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @RunWith(Parameterized.class)
 public class AnnualTaxableIncomeCalculatorTest {
+    //#region Fields
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -23,20 +24,24 @@ public class AnnualTaxableIncomeCalculatorTest {
         });
     }
 
-    private float fInput;
+    private float input;
+    private double expected;
+    //#endregion
 
-    private double fExpected;
-
+    //#region Constructors
     public AnnualTaxableIncomeCalculatorTest(int input, int expected) {
-        this.fInput = input;
-        this.fExpected = expected;
+        this.input = input;
+        this.expected = expected;
     }
+    //#endregion
 
+    //#region Public Methods
     @Test
     public void testAnnualTaxableIncomeCalculation() {
         AnnualTaxableIncomeCalculator taxableIncomeCalculator = new AnnualTaxableIncomeCalculator();
-        double output = taxableIncomeCalculator.execute(fInput);
+        double output = taxableIncomeCalculator.execute(input);
 
-        assertThat(fExpected).isEqualTo(output);
+        assertThat(output).isEqualTo(expected);
     }
+    //#endregion
 }
