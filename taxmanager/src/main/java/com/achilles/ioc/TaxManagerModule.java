@@ -1,6 +1,10 @@
 package com.achilles.ioc;
 
 import com.achilles.contracts.InputCollector;
+import com.achilles.contracts.TaxDomainServiceContract;
+import com.achilles.contracts.TaxableIncomeCalculator;
+import com.achilles.domain.TaxDomainService;
+import com.achilles.utilities.AnnualTaxableIncomeCalculator;
 import com.achilles.utilities.ConsoleInputCollector;
 import com.google.inject.AbstractModule;
 
@@ -19,5 +23,7 @@ public class TaxManagerModule extends AbstractModule {
   @Override
   protected void configure() {
     bind(InputCollector.class).to(ConsoleInputCollector.class);
+    bind(TaxableIncomeCalculator.class).to(AnnualTaxableIncomeCalculator.class);
+    bind(TaxDomainServiceContract.class).to(TaxDomainService.class);
   }
 }

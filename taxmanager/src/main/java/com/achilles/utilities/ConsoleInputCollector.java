@@ -1,6 +1,7 @@
 package com.achilles.utilities;
 
 import com.achilles.contracts.InputCollector;
+import com.achilles.enums.CivilStatus;
 import com.achilles.models.TaxCalculationRequest;
 
 import java.util.Scanner;
@@ -14,8 +15,10 @@ import java.util.Scanner;
  */
 public class ConsoleInputCollector implements InputCollector {
     //#region Constants
-    private final static String WELCOME_MESSAGE = "Welcome to Achilles Tax Manager";
-    private final static String PROVIDE_MONTHLY_INCOME = "Please provide your monthly income: ";
+    private final static String WELCOME_MESSAGE = "=========================Achilles Systems - Tax Calculator====================";
+    private final static String PROVIDE_MONTHLY_INCOME = "Monthly income: ";
+    private final static String CIVIL_STATUS_CAPTURE_MESSAGE = "Civil Status (Single - 1; Married - 2;): ";
+    private final static String PROVIDE_NUMBER_OF_DEPENDENTS = "Number of dependents: ";
     private final static String EMPTY_STRING = "";
     private final static String SEPARATOR = ",";
     //#endregion
@@ -67,19 +70,57 @@ public class ConsoleInputCollector implements InputCollector {
         return input.replaceAll(SEPARATOR, EMPTY_STRING);
     }
 
-    private float getNumber(String msg) {
-        String output;
+    private float getMonthlySalary() {
+        String input;
 
         do {
-            logMessage(msg);
-            output = scanLine();
-            output = cleanNumericString(output);
-        } while (!isNumeric(output));
+            logMessage(PROVIDE_MONTHLY_INCOME);
+            input = scanLine();
+            input = cleanNumericString(input);
+        } while (!isNumeric(input));
 
-        return Float.parseFloat(output);
+        return Float.parseFloat(input);
+    }
+
+    private int getNumberOfDependents() {
+        String input;
+
+        do {
+            logMessage(PROVIDE_NUMBER_OF_DEPENDENTS);
+            input = scanLine();
+            input = cleanNumericString(input);
+        } while (!isNumeric(input));
+
+        return Integer.parseInt(input);
+    }
+
+    private CivilStatus getCivilStatus() {
+        String input;
+        boolean isValidNumber;
+        boolean isWithinLimit;
+        int civilStatusId = 0;
+
+        do {
+            logMessage(CIVIL_STATUS_CAPTURE_MESSAGE);
+
+            input = scanLine();
+            input = cleanNumericString(input);
+
+            isValidNumber = isNumeric(input);
+
+            if(isValidNumber) {
+                civilStatusId = Integer.parseInt(input);
+                isWithinLimit = civilStatusId <= CivilStatus.values().length && civilStatusId > 0;
+            } else {
+                isWithinLimit = false;
+            }
+        } while(!isValidNumber || !isWithinLimit);
+
+        return CivilStatus.values()[civilStatusId - 1];
     }
     //#endregion
 
+    //#region Public Methods
     /**
      * Method used for executing the input collector.
      *
@@ -89,8 +130,19 @@ public class ConsoleInputCollector implements InputCollector {
     @Override
     public TaxCalculationRequest execute() {
         logMessageLine(WELCOME_MESSAGE);
-        request.setMonthlyIncome(getNumber(PROVIDE_MONTHLY_INCOME));
+
+        float monthlyIncome = getMonthlySalary();
+        request.setMonthlyIncome(monthlyIncome);
+
+        CivilStatus civilStatus = getCivilStatus();
+        request.setCivilStatus(civilStatus);
+
+        if(civilStatus.equals(CivilStatus.MARRIED)) {
+            int numberOfDependents = getNumberOfDependents();
+            request.setDependentCount(numberOfDependents);
+        }
 
         return request;
     }
+    //#endregion
 }

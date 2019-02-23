@@ -9,13 +9,13 @@ package com.achilles.enums;
  */
 public enum CivilStatus {
   /**
-   * Status indicating married people.
-   */
-  MARRIED,
-  /**
    * Status indicating single people.
    */
-  SINGLE;
+  SINGLE,
+  /**
+   * Status indicating married people.
+   */
+  MARRIED;
 
   /**
    * Method used to convert civil status to string.
