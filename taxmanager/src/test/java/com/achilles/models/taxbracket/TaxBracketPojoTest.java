@@ -1,4 +1,4 @@
-package com.achilles.models.tax.bracket;
+package com.achilles.models.taxbracket;
 
 import com.achilles.models.TaxBracket;
 import org.junit.Test;
