@@ -1,6 +1,5 @@
 package com.achilles.utilities;
 
-import com.achilles.utilities.AnnualTaxableIncomeCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
