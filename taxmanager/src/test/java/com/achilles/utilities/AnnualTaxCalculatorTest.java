@@ -1,4 +1,4 @@
-package com.achilles;
+package com.achilles.utilities;
 
 import com.achilles.utilities.AnnualTaxCalculator;
 import org.junit.Test;
