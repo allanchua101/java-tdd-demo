@@ -1,7 +1,6 @@
 package com.achilles.models.tax.bracket;
 
 import com.achilles.models.TaxBracket;
-import com.achilles.utilities.AnnualTaxableIncomeCalculator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
