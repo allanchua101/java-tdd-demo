@@ -15,7 +15,7 @@ Below is a list of testing frameworks used for this POC.
 
 ## Vital Points
 
-1. Mocking is utilised for the following classes to focus on their internal wirings and not on logic inside its dependencies.
+1. Mocking is utilised for the following classes to focus on their internal wirings and not on logic inside their dependencies.
 
 - [Input Collection](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) 
 - [Tax Domain Service](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/domain/TaxDomainServiceTest.java)
