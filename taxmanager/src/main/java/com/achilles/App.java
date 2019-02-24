@@ -20,7 +20,7 @@ public class App {
      *
      * @param args The arguments of the program.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Injector injector = Guice.createInjector(new TaxManagerModule());
 
         InputCollector inputCollector = injector.getInstance(InputCollector.class);

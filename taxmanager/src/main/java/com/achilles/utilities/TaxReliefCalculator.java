@@ -1,5 +1,6 @@
 package com.achilles.utilities;
 
+import com.achilles.contracts.TaxReliefCalculatorContract;
 import com.achilles.enums.CivilStatus;
 import com.achilles.models.TaxRelief;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
  * @version 1.0
  * @since February 24, 2019
  */
-public class TaxReliefCalculator {
+public class TaxReliefCalculator implements TaxReliefCalculatorContract {
     //#region Fields
     private List<TaxRelief> taxReliefList;
     //#endregion
@@ -82,8 +83,6 @@ public class TaxReliefCalculator {
                     .stream()
                     .filter(tr -> tr.getCivilStatus() == CivilStatus.SINGLE)
                     .findFirst();
-
-            System.out.println(singleRelief);
 
             if (singleRelief.isPresent()) {
                 return singleRelief.get().getReliefValue();
