@@ -16,14 +16,4 @@ public enum CivilStatus {
    * Status indicating married people.
    */
   MARRIED;
-
-  /**
-   * Method used to convert civil status to string.
-   * 
-   * @return String version of civil status.
-   */
-  @Override
-  public String toString() {
-    return super.toString();
-  }
 }
