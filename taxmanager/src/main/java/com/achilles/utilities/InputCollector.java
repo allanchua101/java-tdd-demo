@@ -85,7 +85,7 @@ public class InputCollector implements InputCollectorContract {
     private CivilStatus getCivilStatus() {
         String input;
         boolean isValidNumber;
-        boolean isWithinLimit;
+        boolean isWithinLimit = false;
         int civilStatusId = 0;
 
         do {
@@ -99,8 +99,6 @@ public class InputCollector implements InputCollectorContract {
             if(isValidNumber) {
                 civilStatusId = Integer.parseInt(input);
                 isWithinLimit = civilStatusId <= CivilStatus.values().length && civilStatusId > 0;
-            } else {
-                isWithinLimit = false;
             }
         } while(!isValidNumber || !isWithinLimit);
 
