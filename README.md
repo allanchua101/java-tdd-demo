@@ -15,24 +15,24 @@ Below is a list of testing frameworks used for this POC.
 
 ## Vital Points
 
-1. Mocking is utilized for the following classes because we want to focus on its internal wirings and not on logic inside it's dependencies.
+1. Mocking is utilised for the following classes to focus on its internal wirings and not on logic inside its dependencies.
 
 - [Input Collection](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) 
 - [Tax Domain Service](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/domain/TaxDomainServiceTest.java)
 
-2. Spying is implemented through the use of counter on input collection to simulate different input from end-users. This helps to control test environment and not rely on end-user involvement on test executions.
+2. Spying is implemented through the use of counter on input collection class to understand how many times did it run. This helps on indentifying which simulated output is going to be returned to prevent manual capturing of data from end-users.
 
 - [Input Collection](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) 
 
-3. Composition root is not tested. We did not test App.java because most of the logic inside it is offloaded to lower level aggregates.
+3. Composition root (App.java) is not tested because most of the logic inside it is offloaded to lower level aggregates.
 
 - [App.java](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/main/java/com/achilles/App.java)
 
-4. Exception throwing testing is implemented to check if IOC mappings are working properly.
+4. Exception throwing test is implemented to check if IOC mappings are working properly.
 
 - [ModuleBootTesting](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/ioc/ModuleBootTest.java)
 
-5. Context resetting of spy related fields is implemented on [InputCollection.java](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) class. Thanks to **@After** annotation from JUnit.
+5. Context reset of spy related fields is implemented on [InputCollection.java](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) class. Thanks to **@After** annotation from JUnit.
 
 6. [ConsoleScanner](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/main/java/com/achilles/utilities/ConsoleScanner.java) is not tested since it requires manual user interaction to be validated.
 
