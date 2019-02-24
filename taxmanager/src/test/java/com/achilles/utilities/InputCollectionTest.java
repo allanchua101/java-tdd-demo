@@ -25,7 +25,6 @@ public class InputCollectionTest {
     //#region Public Methods
     @After
     public void resetSpy() {
-        System.out.println(consoleScannerFakeCount);
         consoleScannerFakeCount = 0;
     }
 
