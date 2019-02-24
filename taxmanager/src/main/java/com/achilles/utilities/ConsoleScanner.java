@@ -21,6 +21,8 @@ public class ConsoleScanner implements ConsoleScannerContract {
      * Method used for executing module.
      *
      * @return Input gathered from console line.
+     *
+     * NOTE: This method is excluded from testing since it's highly coupled to environment.
      */
     @Override
     public String execute() {
