@@ -1,14 +1,12 @@
 package com.achilles;
 
-import com.achilles.contracts.InputCollector;
+import com.achilles.contracts.InputCollectorContract;
 import com.achilles.contracts.TaxDomainServiceContract;
 import com.achilles.models.TaxCalculationRequest;
 import com.achilles.models.TaxCalculationResult;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.achilles.ioc.TaxManagerModule;
-
-import java.io.IOException;
 
 /**
  * Tax Management Module
@@ -23,7 +21,7 @@ public class App {
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new TaxManagerModule());
 
-        InputCollector inputCollector = injector.getInstance(InputCollector.class);
+        InputCollectorContract inputCollector = injector.getInstance(InputCollectorContract.class);
         TaxCalculationRequest request = inputCollector.execute();
 
         TaxDomainServiceContract taxDomainService = injector.getInstance(TaxDomainServiceContract.class);

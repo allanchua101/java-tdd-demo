@@ -19,7 +19,7 @@ public class TaxManagerModule extends AbstractModule {
    */
   @Override
   protected void configure() {
-    bind(InputCollector.class).to(ConsoleInputCollector.class);
+    bind(InputCollectorContract.class).to(InputCollector.class);
     bind(TaxableIncomeCalculator.class).to(AnnualTaxableIncomeCalculator.class);
     bind(TaxCalculator.class).to(AnnualTaxCalculator.class);
     bind(TaxDomainServiceContract.class).to(TaxDomainService.class);

@@ -9,7 +9,7 @@ import com.achilles.models.TaxCalculationRequest;
  * @author Allan A. Chua
  * @since February 21, 2019
  */
-public interface InputCollector {
+public interface InputCollectorContract {
   /**
    * Method used for executing the input collector.
    * 

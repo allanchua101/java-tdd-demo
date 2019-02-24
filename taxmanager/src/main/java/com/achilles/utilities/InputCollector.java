@@ -1,6 +1,6 @@
 package com.achilles.utilities;
 
-import com.achilles.contracts.InputCollector;
+import com.achilles.contracts.InputCollectorContract;
 import com.achilles.enums.CivilStatus;
 import com.achilles.models.TaxCalculationRequest;
 
@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Allan A. Chua
  * @since February 21, 2019
  */
-public class ConsoleInputCollector implements InputCollector {
+public class InputCollector implements InputCollectorContract {
     //#region Constants
     private final static String WELCOME_MESSAGE = "------------------------------Achilles Systems - Tax Calculator-----------------------------";
     private final static String PROVIDE_MONTHLY_INCOME = "Monthly income: ";
@@ -24,7 +24,7 @@ public class ConsoleInputCollector implements InputCollector {
     //#endregion
 
     //#region Constructors
-    public ConsoleInputCollector() {
+    public InputCollector() {
         this.request = new TaxCalculationRequest();
     }
     //#endregion
@@ -34,10 +34,6 @@ public class ConsoleInputCollector implements InputCollector {
     //#endregion
 
     //#region Private Methods
-    private void logMessageLine(String input) {
-        System.out.println(input);
-    }
-
     private void logMessage(String input) {
         System.out.print(input);
     }
@@ -129,7 +125,7 @@ public class ConsoleInputCollector implements InputCollector {
      */
     @Override
     public TaxCalculationRequest execute() {
-        logMessageLine(WELCOME_MESSAGE);
+        System.out.println(WELCOME_MESSAGE);
 
         float monthlyIncome = getMonthlySalary();
         request.setMonthlyIncome(monthlyIncome);
