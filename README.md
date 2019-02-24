@@ -27,3 +27,12 @@ Below is a list of testing frameworks used for this POC.
 4. Exception throwing testing is implemented to check if IOC mappings are working properly.
 
 - [ModuleBootTesting](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/ioc/ModuleBootTest.java)
+
+5. Context resetting of spy related fields is implemented on [InputCollection.java](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/test/java/com/achilles/utilities/InputCollectionTest.java) class. Thanks to **@After** annotation from JUnit.
+
+6. [ConsoleScanner](https://github.com/allanchua101/java-tdd-demo/blob/master/taxmanager/src/main/java/com/achilles/utilities/ConsoleScanner.java) is not tested since it requires manual user interaction to be validated.
+
+### Improvement Points
+
+- **Hardcoded values** - Some of the values associated with tax calculation are hardcoded for the sake of brevitity of the testing showcase. 
+- **Data stores** could have been used to load data from a persistent data store to ease configuration of software. (EG. Tax Brackets + Tax Reliefs). This was intentionally done to simplify of testing.
