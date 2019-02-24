@@ -24,5 +24,6 @@ public class TaxManagerModule extends AbstractModule {
     bind(TaxCalculator.class).to(AnnualTaxCalculator.class);
     bind(TaxDomainServiceContract.class).to(TaxDomainService.class);
     bind(TaxReliefCalculatorContract.class).to(TaxReliefCalculator.class);
+    bind(ConsoleScannerContract.class).to(ConsoleScanner.class);
   }
 }

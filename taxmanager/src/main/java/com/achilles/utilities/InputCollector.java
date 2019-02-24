@@ -1,8 +1,10 @@
 package com.achilles.utilities;
 
+import com.achilles.contracts.ConsoleScannerContract;
 import com.achilles.contracts.InputCollectorContract;
 import com.achilles.enums.CivilStatus;
 import com.achilles.models.TaxCalculationRequest;
+import com.google.inject.Inject;
 
 import java.util.Scanner;
 
@@ -24,33 +26,23 @@ public class InputCollector implements InputCollectorContract {
     //#endregion
 
     //#region Constructors
-    public InputCollector() {
+    @Inject
+    public InputCollector(
+            ConsoleScannerContract consoleScannerContract
+    ) {
         this.request = new TaxCalculationRequest();
+        this.consoleScannerContract = consoleScannerContract;
     }
     //#endregion
 
     //#region Fields
     private TaxCalculationRequest request;
+    private ConsoleScannerContract consoleScannerContract;
     //#endregion
 
     //#region Private Methods
     private void logMessage(String input) {
         System.out.print(input);
-    }
-
-    private String scanLine() {
-        String output = EMPTY_STRING;
-
-        while(output.equals(EMPTY_STRING)) {
-            try {
-                Scanner input = new Scanner(System.in);
-                output = input.nextLine();
-            } catch (Exception ex) {
-                output = EMPTY_STRING;
-            }
-        }
-
-        return output;
     }
 
     private boolean isNumeric(String strNum) {
@@ -71,7 +63,7 @@ public class InputCollector implements InputCollectorContract {
 
         do {
             logMessage(PROVIDE_MONTHLY_INCOME);
-            input = scanLine();
+            input = consoleScannerContract.execute();
             input = cleanNumericString(input);
         } while (!isNumeric(input));
 
@@ -83,7 +75,7 @@ public class InputCollector implements InputCollectorContract {
 
         do {
             logMessage(PROVIDE_NUMBER_OF_DEPENDENTS);
-            input = scanLine();
+            input = consoleScannerContract.execute();
             input = cleanNumericString(input);
         } while (!isNumeric(input));
 
@@ -99,7 +91,7 @@ public class InputCollector implements InputCollectorContract {
         do {
             logMessage(CIVIL_STATUS_CAPTURE_MESSAGE);
 
-            input = scanLine();
+            input = consoleScannerContract.execute();
             input = cleanNumericString(input);
 
             isValidNumber = isNumeric(input);
