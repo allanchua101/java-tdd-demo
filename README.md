@@ -1,6 +1,10 @@
 # JAVA TDD Demo
 This repository showcases typical concepts and implementation of TDD in Java.
 
+## Code Coverage
+
+![Code Coverage](https://github.com/allanchua101/java-tdd-demo/blob/master/results/test%20results.png)
+
 ## Dependencies
 Below is a list of testing frameworks used for this POC.
 
