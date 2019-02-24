@@ -15,6 +15,9 @@ import java.util.List;
  */
 public class AnnualTaxCalculator implements TaxCalculator {
     //#region Constants
+    // NOTE: On real-lief situations, this would usually originate
+    //       from an easy to configure data storage. For the sake of
+    //       TDD demo, they we're hardcoded for the mean time.
     private List<TaxBracket> taxBrackets;
     private final static double CATEGORY_A_MIN = 0;
     private final static double CATEGORY_B_MIN = 50000000;
